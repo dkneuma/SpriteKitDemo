@@ -9,13 +9,19 @@
 import UIKit
 import SpriteKit
 
-class ArcheryScene: SKScene {
+class ArcheryScene: SKScene, SKPhysicsContactDelegate {
+
+    let arrowCategory: UInt32 = 0x1 << 0
+    let ballCategory: UInt32 = 0x1 << 1
+    
     var score = 0
     var ballCount = 20
     var archerAnimation = [SKTexture]()
     
     override func didMoveToView(view: SKView) {
         self.physicsWorld.gravity = CGVectorMake(0, -1.0)
+        self.physicsWorld.contactDelegate = self
+        
         self.initArcheryScene()
     }
     func createArrowNode() -> SKSpriteNode {
@@ -32,6 +38,9 @@ class ArcheryScene: SKScene {
             arrow.frame.size)
         
         arrow.physicsBody?.usesPreciseCollisionDetection = true
+        arrow.physicsBody?.categoryBitMask = arrowCategory
+        arrow.physicsBody?.collisionBitMask = arrowCategory | ballCategory
+        arrow.physicsBody?.contactTestBitMask = arrowCategory | ballCategory
         
         return arrow
     }
@@ -45,9 +54,68 @@ class ArcheryScene: SKScene {
             (ball.size.width/2))
         
         ball.physicsBody?.usesPreciseCollisionDetection = true
+        ball.physicsBody?.categoryBitMask = ballCategory
         self.addChild(ball)
     }
     
+    func didBeginContact(contact: SKPhysicsContact) {
+        let firstNode = contact.bodyA.node as! SKSpriteNode
+        let secondNode = contact.bodyB.node as! SKSpriteNode
+        
+        if (contact.bodyA.categoryBitMask == arrowCategory) &&
+            (contact.bodyB.categoryBitMask == ballCategory) {
+                
+                let contactPoint = contact.contactPoint
+                let contact_x = contactPoint.x
+                let contact_y = contactPoint.y
+                let target_y = secondNode.position.y
+                let margin = secondNode.frame.size.height/2 - 25
+                
+                if (contact_y > (target_y - margin))
+                    && (contact_y < (target_y + margin)) {
+                        let texture = SKTexture(imageNamed: "ArrowHitTexture")
+                        firstNode.texture = texture
+                        let joint =
+                        SKPhysicsJointFixed.jointWithBodyA(contact.bodyA,
+                            bodyB: contact.bodyB, 
+                            anchor: CGPointMake(contact_x, contact_y))
+                        self.physicsWorld.addJoint(joint)
+                        score++
+                }
+        }
+    }
+    
+    func createScoreNode() -> SKLabelNode {
+        let scoreNode = SKLabelNode(fontNamed: "Bradley Hand")
+        scoreNode.name = "scoreNode"
+        
+        let newScore = "Score \(score)"
+        
+        scoreNode.text = newScore
+        scoreNode.fontSize = 60
+        scoreNode.fontColor = SKColor.redColor()
+        scoreNode.position = CGPointMake(CGRectGetMidX(self.frame),
+            CGRectGetMidY(self.frame))
+        return scoreNode
+    }
+    func gameOver() {
+        let scoreNode = self.createScoreNode()
+        self.addChild(scoreNode)
+        let fadeOut = SKAction.sequence([SKAction.waitForDuration(3.0),
+            SKAction.fadeOutWithDuration(3.0)])
+        
+        let welcomeReturn =  SKAction.runBlock({
+            let transition = SKTransition.revealWithDirection(
+                SKTransitionDirection.Down, duration: 1.0)
+            let welcomeScene = GameScene(fileNamed: "GameScene")
+            self.scene!.view?.presentScene(welcomeScene,
+                transition: transition)
+        })
+        
+        let sequence = SKAction.sequence([fadeOut, welcomeReturn])
+        
+        self.runAction(sequence)
+    }
     
     func randomBetween(low: CGFloat, high: CGFloat) -> CGFloat
     {
@@ -70,7 +138,12 @@ class ArcheryScene: SKScene {
             SKAction.waitForDuration(1)])
         
         self.runAction(SKAction.repeatAction(releaseBalls,
-            count: ballCount), completion: nil)
+            count: ballCount), completion: {
+                let sequence =
+                SKAction.sequence([SKAction.waitForDuration(5.0),
+                    SKAction.runBlock({ self.gameOver() })])
+                self.runAction(sequence)
+        })
         
     }
     
@@ -80,7 +153,7 @@ class ArcheryScene: SKScene {
         
         if archerNode != nil {
             let animate = SKAction.animateWithTextures(archerAnimation,
-                timePerFrame: 0.05)
+                timePerFrame: 0.02)
             
             let shootArrow = SKAction.runBlock({
                 let arrowNode = self.createArrowNode()
