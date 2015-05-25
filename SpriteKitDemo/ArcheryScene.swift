@@ -46,7 +46,7 @@ class ArcheryScene: SKScene, SKPhysicsContactDelegate {
     }
     func createBallNode() {
         let ball = SKSpriteNode(imageNamed: "BallTexture.png")
-        ball.position = CGPointMake(randomBetween(0, high:
+        ball.position = CGPointMake(randomBetween(100, high:
             self.size.width-200), self.size.height-50)
         
         ball.name = "ballNode"
@@ -66,20 +66,25 @@ class ArcheryScene: SKScene, SKPhysicsContactDelegate {
             (contact.bodyB.categoryBitMask == ballCategory) {
                 
                 let contactPoint = contact.contactPoint
-                let contact_x = contactPoint.x
                 let contact_y = contactPoint.y
+                let target_x = secondNode.position.x
                 let target_y = secondNode.position.y
                 let margin = secondNode.frame.size.height/2 - 25
                 
                 if (contact_y > (target_y - margin))
                     && (contact_y < (target_y + margin)) {
-                        let texture = SKTexture(imageNamed: "ArrowHitTexture")
-                        firstNode.texture = texture
-                        let joint =
-                        SKPhysicsJointFixed.jointWithBodyA(contact.bodyA,
-                            bodyB: contact.bodyB, 
-                            anchor: CGPointMake(contact_x, contact_y))
-                        self.physicsWorld.addJoint(joint)
+                        
+                        let burstPath = NSBundle.mainBundle().pathForResource(
+                            "BurstParticle", ofType: "sks")
+                        
+                        if burstPath != nil {
+                            let burstNode =
+                            NSKeyedUnarchiver.unarchiveObjectWithFile(burstPath!)
+                                as! SKEmitterNode
+                            burstNode.position = CGPointMake(target_x, target_y)
+                            secondNode.removeFromParent()
+                            self.addChild(burstNode)
+                        }
                         score++
                 }
         }

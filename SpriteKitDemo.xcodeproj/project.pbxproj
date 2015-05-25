@@ -22,6 +22,8 @@
 		B617757F1B12B3F7004E8B0F /* ArrowTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = B617757B1B12B3F7004E8B0F /* ArrowTexture.png */; };
 		B61775801B12B3F7004E8B0F /* BallFragment.png in Resources */ = {isa = PBXBuildFile; fileRef = B617757C1B12B3F7004E8B0F /* BallFragment.png */; };
 		B61775811B12B3F7004E8B0F /* BallTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = B617757D1B12B3F7004E8B0F /* BallTexture.png */; };
+		B6A699841B13DC7A00A58307 /* BurstParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = B6A699821B13DC7A00A58307 /* BurstParticle.sks */; };
+		B6A699851B13DC7A00A58307 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = B6A699831B13DC7A00A58307 /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		B617757B1B12B3F7004E8B0F /* ArrowTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowTexture.png; sourceTree = "<group>"; };
 		B617757C1B12B3F7004E8B0F /* BallFragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BallFragment.png; sourceTree = "<group>"; };
 		B617757D1B12B3F7004E8B0F /* BallTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BallTexture.png; sourceTree = "<group>"; };
+		B6A699821B13DC7A00A58307 /* BurstParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BurstParticle.sks; sourceTree = "<group>"; };
+		B6A699831B13DC7A00A58307 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				B617754E1B127F07004E8B0F /* AppDelegate.swift */,
 				B61775501B127F07004E8B0F /* GameScene.sks */,
 				B61775741B1292F1004E8B0F /* ArcheryScene.swift */,
+				B6A699821B13DC7A00A58307 /* BurstParticle.sks */,
+				B6A699831B13DC7A00A58307 /* spark.png */,
 				B61775761B12936A004E8B0F /* ArcheryScene.sks */,
 				B61775521B127F07004E8B0F /* GameScene.swift */,
 				B61775541B127F07004E8B0F /* GameViewController.swift */,
@@ -220,9 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B61775811B12B3F7004E8B0F /* BallTexture.png in Resources */,
+				B6A699851B13DC7A00A58307 /* spark.png in Resources */,
 				B617755D1B127F07004E8B0F /* LaunchScreen.xib in Resources */,
 				B61775771B12936A004E8B0F /* ArcheryScene.sks in Resources */,
 				B61775801B12B3F7004E8B0F /* BallFragment.png in Resources */,
+				B6A699841B13DC7A00A58307 /* BurstParticle.sks in Resources */,
 				B617755A1B127F07004E8B0F /* Images.xcassets in Resources */,
 				B61775511B127F07004E8B0F /* GameScene.sks in Resources */,
 				B61775791B129A36004E8B0F /* archer.atlas in Resources */,
@@ -447,6 +455,7 @@
 				B617756E1B127F07004E8B0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B617756F1B127F07004E8B0F /* Build configuration list for PBXNativeTarget "SpriteKitDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +464,7 @@
 				B61775711B127F07004E8B0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
