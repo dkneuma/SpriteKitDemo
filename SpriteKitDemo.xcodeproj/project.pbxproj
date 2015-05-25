@@ -15,6 +15,13 @@
 		B617755A1B127F07004E8B0F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B61775591B127F07004E8B0F /* Images.xcassets */; };
 		B617755D1B127F07004E8B0F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B617755B1B127F07004E8B0F /* LaunchScreen.xib */; };
 		B61775691B127F07004E8B0F /* SpriteKitDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61775681B127F07004E8B0F /* SpriteKitDemoTests.swift */; };
+		B61775751B1292F1004E8B0F /* ArcheryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61775741B1292F1004E8B0F /* ArcheryScene.swift */; };
+		B61775771B12936A004E8B0F /* ArcheryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B61775761B12936A004E8B0F /* ArcheryScene.sks */; };
+		B61775791B129A36004E8B0F /* archer.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B61775781B129A36004E8B0F /* archer.atlas */; };
+		B617757E1B12B3F7004E8B0F /* ArrowHitTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = B617757A1B12B3F7004E8B0F /* ArrowHitTexture.png */; };
+		B617757F1B12B3F7004E8B0F /* ArrowTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = B617757B1B12B3F7004E8B0F /* ArrowTexture.png */; };
+		B61775801B12B3F7004E8B0F /* BallFragment.png in Resources */ = {isa = PBXBuildFile; fileRef = B617757C1B12B3F7004E8B0F /* BallFragment.png */; };
+		B61775811B12B3F7004E8B0F /* BallTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = B617757D1B12B3F7004E8B0F /* BallTexture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +47,13 @@
 		B61775621B127F07004E8B0F /* SpriteKitDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpriteKitDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61775671B127F07004E8B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B61775681B127F07004E8B0F /* SpriteKitDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitDemoTests.swift; sourceTree = "<group>"; };
+		B61775741B1292F1004E8B0F /* ArcheryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcheryScene.swift; sourceTree = "<group>"; };
+		B61775761B12936A004E8B0F /* ArcheryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ArcheryScene.sks; sourceTree = "<group>"; };
+		B61775781B129A36004E8B0F /* archer.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = archer.atlas; sourceTree = "<group>"; };
+		B617757A1B12B3F7004E8B0F /* ArrowHitTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowHitTexture.png; sourceTree = "<group>"; };
+		B617757B1B12B3F7004E8B0F /* ArrowTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowTexture.png; sourceTree = "<group>"; };
+		B617757C1B12B3F7004E8B0F /* BallFragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BallFragment.png; sourceTree = "<group>"; };
+		B617757D1B12B3F7004E8B0F /* BallTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BallTexture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +97,8 @@
 			children = (
 				B617754E1B127F07004E8B0F /* AppDelegate.swift */,
 				B61775501B127F07004E8B0F /* GameScene.sks */,
+				B61775741B1292F1004E8B0F /* ArcheryScene.swift */,
+				B61775761B12936A004E8B0F /* ArcheryScene.sks */,
 				B61775521B127F07004E8B0F /* GameScene.swift */,
 				B61775541B127F07004E8B0F /* GameViewController.swift */,
 				B61775561B127F07004E8B0F /* Main.storyboard */,
@@ -96,7 +112,12 @@
 		B617754C1B127F07004E8B0F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B61775781B129A36004E8B0F /* archer.atlas */,
 				B617754D1B127F07004E8B0F /* Info.plist */,
+				B617757A1B12B3F7004E8B0F /* ArrowHitTexture.png */,
+				B617757B1B12B3F7004E8B0F /* ArrowTexture.png */,
+				B617757C1B12B3F7004E8B0F /* BallFragment.png */,
+				B617757D1B12B3F7004E8B0F /* BallTexture.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -198,10 +219,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B61775811B12B3F7004E8B0F /* BallTexture.png in Resources */,
 				B617755D1B127F07004E8B0F /* LaunchScreen.xib in Resources */,
+				B61775771B12936A004E8B0F /* ArcheryScene.sks in Resources */,
+				B61775801B12B3F7004E8B0F /* BallFragment.png in Resources */,
 				B617755A1B127F07004E8B0F /* Images.xcassets in Resources */,
 				B61775511B127F07004E8B0F /* GameScene.sks in Resources */,
+				B61775791B129A36004E8B0F /* archer.atlas in Resources */,
 				B61775581B127F07004E8B0F /* Main.storyboard in Resources */,
+				B617757E1B12B3F7004E8B0F /* ArrowHitTexture.png in Resources */,
+				B617757F1B12B3F7004E8B0F /* ArrowTexture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B61775531B127F07004E8B0F /* GameScene.swift in Sources */,
+				B61775751B1292F1004E8B0F /* ArcheryScene.swift in Sources */,
 				B61775551B127F07004E8B0F /* GameViewController.swift in Sources */,
 				B617754F1B127F07004E8B0F /* AppDelegate.swift in Sources */,
 			);
